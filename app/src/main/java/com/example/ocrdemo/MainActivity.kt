@@ -1,11 +1,14 @@
 package com.example.ocrdemo
 
 import android.content.Context
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.example.ocrdemo.ext.TAG
+import com.example.ocrdemo.ocrengine.IOCREngine
+import com.example.ocrdemo.ocrengine.TesseractOCREngine
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), IOCREngine.OnProcessorListener {
@@ -16,14 +19,13 @@ class MainActivity : AppCompatActivity(), IOCREngine.OnProcessorListener {
         setContentView(R.layout.activity_main)
     }
 
-    private fun startProcess() {
-    }
-
-
     override fun onStartProcess() {
         printLog("Process start")
     }
 
+    override fun onLoadBitmap(bitmap: Bitmap) {
+        imageView.setImageBitmap(bitmap)
+    }
 
     override fun onFailed(error: String) {
         printLog("Process error: $error")
@@ -51,6 +53,7 @@ class MainActivity : AppCompatActivity(), IOCREngine.OnProcessorListener {
 
     fun startProcess(view: View) {
         tvReslut.text = ""
-        TesseractOCREngine().imgFileToText(getParentDirPath(this), getImgFilePath(this), this)
+        TesseractOCREngine()
+            .imgFileToText(getParentDirPath(this), getImgFilePath(this), this)
     }
 }
