@@ -56,4 +56,12 @@ class MainActivity : AppCompatActivity(), IOCREngine.OnProcessorListener {
         TesseractOCREngine()
             .imgFileToText(getParentDirPath(this), getImgFilePath(this), this)
     }
+
+    /**
+     * start CameraSourceActivity: Using Mobile Vision Text Api
+     */
+    fun startCameraSourceActivity(view: View) {
+
+
+    }
 }

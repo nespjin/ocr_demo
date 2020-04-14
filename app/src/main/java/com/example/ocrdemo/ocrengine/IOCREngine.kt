@@ -11,6 +11,10 @@ import android.graphics.Bitmap
  **/
 interface IOCREngine {
 
+    /**
+     * initialization OCR Engine
+     */
+    fun initEngine()
 
     fun imgFileToText(
         parentPath: String,
@@ -53,6 +57,8 @@ interface IOCREngine {
 
         return sb.toString()
     }
+
+    fun release()
 
     interface OnProcessorListener {
 

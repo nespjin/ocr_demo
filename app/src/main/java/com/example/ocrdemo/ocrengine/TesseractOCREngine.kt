@@ -22,6 +22,10 @@ import java.io.File
 class TesseractOCREngine : IOCREngine {
 
 
+    override fun initEngine() {
+
+    }
+
    override fun imgFileToText(
         parentPath: String,
         imgFilePath: String,
@@ -76,6 +80,10 @@ class TesseractOCREngine : IOCREngine {
 
         }
         t.start()
+    }
+
+    override fun release() {
+
     }
 
 
